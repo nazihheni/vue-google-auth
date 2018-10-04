@@ -1,4 +1,4 @@
-;(function (global, factory) {
+; (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
     define([], factory)
   } else if (typeof exports === 'object') {
@@ -17,12 +17,12 @@
       Vue.prototype.$googleAuth = googleAuth
 
       if (typeof options === 'object') {
-        config = Object.assign(options, { scope: 'profile email https://www.googleapis.com/auth/plus.login' })
+        config = Object.assign(options, { scope: 'profile email' })
       }
     }
   }
 
-  function googleAuth () {
+  function googleAuth() {
     return {
       load: function () {
         return new Promise(function (resolve, reject) {
@@ -52,7 +52,7 @@
             errorCallback(error)
           })
         } else {
-          window.gapi.auth2.getAuthInstance().grantOfflineAccess({'redirect_uri': 'postmessage'}).then(function (response) {
+          window.gapi.auth2.getAuthInstance().grantOfflineAccess({ 'redirect_uri': 'postmessage' }).then(function (response) {
             successCallback(response.code)
           }, function (error) {
             errorCallback(error)
@@ -70,7 +70,7 @@
     }
   }
 
-  function installClient () {
+  function installClient() {
     return new Promise(function (resolve, reject) {
       var script = document.createElement('script')
       script.src = gapiUrl
@@ -85,7 +85,7 @@
     })
   }
 
-  function initClient () {
+  function initClient() {
     return new Promise(function (resolve, reject) {
       window.gapi.load('auth2', function () {
         window.gapi.auth2.init(config)
