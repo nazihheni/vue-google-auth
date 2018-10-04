@@ -15,7 +15,7 @@
     install: function (Vue, options) {
       Vue.googleAuth = googleAuth
       Vue.prototype.$googleAuth = googleAuth
-
+		// https://www.googleapis.com/auth/plus.login
       if (typeof options === 'object') {
         config = Object.assign(options, { scope: 'profile email' })
       }
